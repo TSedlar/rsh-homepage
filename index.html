@@ -1,0 +1,66 @@
+<html lang=en>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/styles/home.css">
+</head>
+
+<body>
+  <script src="static/scripts/hyperapp.js"></script>
+  <script src="static/scripts/hyperapp-html.js"></script>
+  <script>
+    const { h, app } = hyperapp
+    const { div, a, span, img, p } = html
+
+    const state = {}
+    const actions = {}
+
+    const year = new Date().getFullYear()
+
+    const view = (state, actions) => (
+      div({id: 'content'}, [
+        div({id: 'logo'}, [
+          a({href: '/'}, [
+            span({class: 'logo-left'}, 'RS'),
+            span('-'),
+            span({class: 'logo-right'}, 'Hacking')
+          ])
+        ]),
+        a({href: '/forums'}, [
+          div({class: 'link'}, [
+            img({class: 'link-logo', src:'./static/images/forum-logo.png'}),
+            'Visit Forums'
+          ])
+        ]),
+        
+        a({href: '/resources'}, [
+          div({class: 'link link-flip'}, [
+            img({class: 'link-logo', src:'./static/images/resources-logo.png'}),
+            'Visit Resources'
+          ])
+        ]),
+        a({href: 'https://slack.runetek.io/'}, [
+          div({class: 'link'}, [
+            img({class: 'link-logo', src:'./static/images/slack-logo.png'}),
+            'Join Slack'
+          ])
+        ]),  
+        a({href: 'https://discord.gg/A6FFggF'}, [
+          div({class: 'link link-flip'}, [
+            img({class: 'link-logo', src:'./static/images/discord-logo.png'}),
+            'Join Discord'
+          ])
+        ]),
+        div({id: 'footer'}, [
+          span('rs-hacking.com and its affiliates are NOT responsible for any damage caused by information gained here'),
+          div({id: 'footer-separator'}),
+          span(`© 2012-${year} rs-hacking.com`),
+          span('Contact: admin@rs-hacking.com')
+        ])
+      ])
+    )
+    app(state, actions, view, document.body)
+  </script>
+</body>
